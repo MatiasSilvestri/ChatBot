@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi chatbot</title>
+</head>
+
+<body>
+  <div id="conversacion">
+    <p>Bienvenido al chatbot. ¿En qué puedo ayudarte hoy?</p>
+  </div>
+  <form>
+    <input type="text" id="mensaje" placeholder="Escribe tu mensaje aquí">
+    <button type="submit" id="enviar">Enviar</button>
+  </form>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const bot = {
+      hola:'Hola, ¿cómo estás hoy?',
+      buenas: 'Buenos días, ¿en qué puedo ayudarte?',
+      adios: 'Hasta luego, espero que hayas encontrado la información que necesitabas.'
+    };
+
+    const enviarMensaje = () => {
+      const mensaje = document.getElementById('mensaje').value;
+      if (bot[mensaje]) {
+        document.getElementById('conversacion').innerHTML += `<p>${bot[mensaje]}</p>`;
+      } else {
+        document.getElementById('conversacion').innerHTML += `<p>Lo siento, no entiendo tu pregunta.</p>`;
+      }
+      document.getElementById('mensaje').value = '';
+    };
+
+    document.getElementById('enviar').addEventListener('click', enviarMensaje);
+  </script>
+</body>
+</html>
